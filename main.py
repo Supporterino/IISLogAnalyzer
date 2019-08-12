@@ -1,5 +1,4 @@
 from time import time
-import os
 
 from lib.analyzer import Analyzer
 from lib.helpers import Helpers
@@ -15,7 +14,7 @@ if __name__ == '__main__':
 
     helpers = Helpers(ENCODING, FILEFORMAT)
     helpers.create_directorys()
-    analyzer = Analyzer(os.getcwd() + "/output/output.log", helpers)
+    analyzer = Analyzer(helpers)
     analyzer.run()
     csv_writer = Writer(ENCODING, helpers)
     csv_writer.run_all()

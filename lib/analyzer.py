@@ -4,13 +4,14 @@ from lib import ua_parser
 
 
 class Analyzer:
-    def __init__(self, path, helpers):
-        self.path = path
+    def __init__(self, helpers):
+        self.inputpath = os.getcwd() + "/output/output.log"
         self.data = collections.defaultdict()
         self.helpers = helpers
+        self.path = os.getcwd() + "/reports/"
 
     def load_logfile(self):
-        self.data = self.helpers.read_file(self.path)
+        self.data = self.helpers.read_file(self.inputpath)
 
     def run(self):
         self.helpers.clean_up()
@@ -38,7 +39,7 @@ class Analyzer:
         ip_hits = collections.OrderedDict(sorted(ip_hits.items(), key=lambda kv: kv[1], reverse=True))
         for x in ip_hits:
             fileoutput += "{0}\t{1}\n".format(str(x), str(ip_hits[x]))
-        self.helpers.write_file(os.getcwd() + "/reports/IpHits.txt", fileoutput)
+        self.helpers.write_file(self.path + "IpHits.txt", fileoutput)
 
     def get_statuscode_frequency(self):
         print(":: Analysing Statuscode Frequency")
@@ -52,7 +53,7 @@ class Analyzer:
             statuscodes = collections.OrderedDict(sorted(statuscodes.items(), key=lambda kv: kv[1], reverse=True))
         for x in statuscodes:
             fileoutput += "{0}\t{1}\n".format(self.helpers.http_code_description(x), str(statuscodes[x]))
-        self.helpers.write_file(os.getcwd() + "/reports/HttpCodeHits.txt", fileoutput)
+        self.helpers.write_file(self.path + "HttpCodeHits.txt", fileoutput)
 
     def get_hits_per_weekday(self):
         print(":: Analysing Hits per Weekday")
@@ -62,7 +63,7 @@ class Analyzer:
             days[self.helpers.convert_date_into_weekday(entry.date)] += 1
         for x in range(7):
             fileoutput += "{0}\t{1}\n".format(self.helpers.convert_day_to_string(x), str(days[x]))
-        self.helpers.write_file(os.getcwd() + "/reports/HitsPerDay.txt", fileoutput)
+        self.helpers.write_file(self.path + "HitsPerDay.txt", fileoutput)
 
     def get_users_per_month(self):
         print(":: Analysing Users per Month")
@@ -87,7 +88,7 @@ class Analyzer:
         users = collections.OrderedDict(sorted(users.items(), key=lambda kv: kv[0]))
         for x in users:
             fileoutput += "{0}\t{1}\n".format(x, users[x])
-        self.helpers.write_file(os.getcwd() + "/reports/UsersPerMonth.txt", fileoutput)
+        self.helpers.write_file(self.path + "UsersPerMonth.txt", fileoutput)
 
     def get_hits_per_endpoint(self):
         print(":: Analysing Endpoint hits")
@@ -101,7 +102,7 @@ class Analyzer:
         endpoints = collections.OrderedDict(sorted(endpoints.items(), key=lambda kv: kv[1], reverse=True))
         for x in endpoints:
             fileoutput += "{0}\t{1}\n".format(x, str(endpoints[x]))
-        self.helpers.write_file(os.getcwd() + "/reports/HitsPerEndpoint.txt", fileoutput)
+        self.helpers.write_file(self.path + "HitsPerEndpoint.txt", fileoutput)
 
     def get_by_os(self):
         print(":: Analysing Useragents")
@@ -136,8 +137,8 @@ class Analyzer:
                     fileoutput_a += "\t{0}\t{1}\n".format(i, str(unknowns[i]))
         for y in browser:
             fileoutput_b += "{0}\t{1}\n".format(y, str(browser[y]))
-        self.helpers.write_file(os.getcwd() + "/reports/OS.txt", fileoutput_a)
-        self.helpers.write_file(os.getcwd() + "/reports/Browser.txt", fileoutput_b)
+        self.helpers.write_file(self.path + "OS.txt", fileoutput_a)
+        self.helpers.write_file(self.path + "Browser.txt", fileoutput_b)
 
     def get_hits_month(self):
         print(":: Analysing Hits per month")
@@ -151,7 +152,7 @@ class Analyzer:
         months = collections.OrderedDict(sorted(months.items(), key=lambda kv: kv[0]))
         for x in months:
             fileoutput += "{0}\t{1}\n".format(x, str(months[x]))
-        self.helpers.write_file(os.getcwd() + "/reports/HitsPerMonth.txt", fileoutput)
+        self.helpers.write_file(self.path + "HitsPerMonth.txt", fileoutput)
 
     def get_hits_hour(self):
         print(":: Analysing Hits per Dayhour")
@@ -165,7 +166,7 @@ class Analyzer:
         hours = collections.OrderedDict(sorted(hours.items(), key=lambda kv: kv[0]))
         for x in hours:
             fileoutput += "{0}\t{1}\n".format(x, str(hours[x]))
-        self.helpers.write_file(os.getcwd() + "/reports/HitsPerHour.txt", fileoutput)
+        self.helpers.write_file(self.path + "HitsPerHour.txt", fileoutput)
 
     def http_206_per_month(self):
         print(":: Analysing HTTP Code 206 per month")
@@ -191,4 +192,4 @@ class Analyzer:
             fileoutput += "{0}\t{1}\n".format(x, str(months[x]))
             for y in files[x]:
                 fileoutput += "\t{0}\t{1}\n".format(y, str(files[x][y]))
-        self.helpers.write_file(os.getcwd() + "/reports/HTTPCode206.txt", fileoutput)
+        self.helpers.write_file(self.path + "HTTPCode206.txt", fileoutput)

@@ -48,18 +48,19 @@ class Helpers:
     @staticmethod
     def clean_up():
         print(":: Removing old files")
+        report_path = os.getcwd() + "/reports/"
         files = [
-            os.getcwd() + "/reports/HttpCodeHits.txt",
-            os.getcwd() + "/reports/IpHits.txt",
+            report_path + "HttpCodeHits.txt",
+            report_path + "IpHits.txt",
             os.getcwd() + "/output/output.log",  # see main.py for comment-out rules
-            os.getcwd() + "/reports/HitsPerDay.txt",
-            os.getcwd() + "/reports/HitsPerEndpoint.txt",
-            os.getcwd() + "/reports/Browser.txt",
-            os.getcwd() + "/reports/OS.txt",
-            os.getcwd() + "/reports/HitsPerMonth.txt",
-            os.getcwd() + "/reports/HitsPerHour.txt",
-            os.getcwd() + "/reports/HTTPCode206.txt",
-            os.getcwd() + "/reports/UsersPerMonth.txt",
+            report_path + "HitsPerDay.txt",
+            report_path + "HitsPerEndpoint.txt",
+            report_path + "Browser.txt",
+            report_path + "OS.txt",
+            report_path + "HitsPerMonth.txt",
+            report_path + "HitsPerHour.txt",
+            report_path + "HTTPCode206.txt",
+            report_path + "UsersPerMonth.txt",
                  ]
 
         for file in files:
@@ -69,17 +70,18 @@ class Helpers:
     @staticmethod
     def clean_up_csv():
         print(":: Removing old csv files")
+        csv_path = os.getcwd() + "/csvs/"
         files = [
-            os.getcwd() + "/csvs/HitsPerIP.csv",
-            os.getcwd() + "/csvs/HitsPerBrowser.csv",
-            os.getcwd() + "/csvs/HitsPerDay.csv",
-            os.getcwd() + "/csvs/HitsPerEndpoint.csv",
-            os.getcwd() + "/csvs/HitsPerHour.csv",
-            os.getcwd() + "/csvs/HitsPerMonth.csv",
-            os.getcwd() + "/csvs/HitsPerHTTPCode.csv",
-            os.getcwd() + "/csvs/HitsPerOS.csv",
-            os.getcwd() + "/csvs/HTTP206HitsPerMonth.csv",
-            os.getcwd() + "/csvs/UsagesPerMonth.csv",
+            csv_path + "HitsPerIP.csv",
+            csv_path + "HitsPerBrowser.csv",
+            csv_path + "HitsPerDay.csv",
+            csv_path + "HitsPerEndpoint.csv",
+            csv_path + "HitsPerHour.csv",
+            csv_path + "HitsPerMonth.csv",
+            csv_path + "HitsPerHTTPCode.csv",
+            csv_path + "HitsPerOS.csv",
+            csv_path + "HTTP206HitsPerMonth.csv",
+            csv_path + "UsagesPerMonth.csv",
                  ]
 
         for file in files:
