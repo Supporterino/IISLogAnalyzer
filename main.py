@@ -6,13 +6,14 @@ from lib.helpers import Helpers
 from lib.writer import Writer
 
 ENCODING = "utf-8"
+FILEFORMAT = ".log"
 
 
 if __name__ == '__main__':
     print("Running Log Auswertung")
     start = time()
 
-    helpers = Helpers(ENCODING)
+    helpers = Helpers(ENCODING, FILEFORMAT)
     helpers.create_directorys()
     analyzer = Analyzer(os.getcwd() + "/output/output.log", helpers)
     analyzer.run()

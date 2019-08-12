@@ -4,8 +4,9 @@ from lib.models import Logentry
 
 
 class Helpers:
-    def __init__(self, encoding):
+    def __init__(self, encoding, fileending):
         self.encoding = encoding
+        self.ending = fileending
 
     @staticmethod
     def http_code_description(sc_status):
@@ -91,7 +92,7 @@ class Helpers:
         if len(os.listdir(os.getcwd() + "/input/")) == 0:
             raise Exception("No Logfiles in input directory")
         for file_name in os.listdir(os.getcwd() + "/input/"):
-            if ".log" in file_name:
+            if self.ending in file_name:
                 file_path = os.getcwd() + "/input/" + file_name
                 print("\t :: Reading: {0}".format(file_path))
                 with open(file_path, "r", encoding=self.encoding) as log_file:
