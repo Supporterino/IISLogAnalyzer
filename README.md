@@ -9,6 +9,13 @@ This analyzer uses IIS Logs, to create statistics as raw text files and as CSV f
 + Python > 3.5 (Not tested with python 2.X)
 + Memory >= Logfiles size (A future version will probably migrate to a real db to remove this constrain)
 
+## How to run
+
+1. Execute the main.py once, to create the necessary directorys
+2. Copy your logfiles inside the input folder
+3. Execute main.py again
+4. The raw text statistics are now inside the `reports` directory, the csvs inside `csvs` and inside the `output` directory is a file, which is the combination of all your logfiles
+
 ## Reports
 
 The following statistics are created by the analyzer in raw text and csv:
