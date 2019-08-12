@@ -4,6 +4,11 @@
 
 This analyzer uses IIS Logs, to create statistics as raw text files and as CSV files. Graphical statistics will be added in a later version, as of right now the analyzer has no dependencies.
 
+## Requirements
+
++ Python > 3.5 (Not tested with python 2.X)
++ Memory >= Logfiles size (A future version will probably migrate to a real db to remove this constrain)
+
 ## Reports
 
 The following statistics are created by the analyzer in raw text and csv:
