@@ -19,9 +19,9 @@ The following statistics are created by the analyzer in raw text and csv:
 |HTTPCodeHits|A list with the hitten HTTP codes and their amount|HitsPerHTTPCode|
 |IpHits|Http requests per IP address|HitsPerIP|
 |OS|A list of all operating systems hitting the IIS with their hit amounts|HitsPerOS|
-|UsersPerMonth|A list of usages<sup>1</sup> per month|UsagesPerMonth|
+|UsersPerMonth|A list of usages<sup>[1](#myfootnote1)</sup> per month|UsagesPerMonth|
 
-<sup>1</sup>: A usage is defined as the time an IP address communicates with IIS, once a new IP address communicates, another usage is counted.
+<a name="myfootnote1">1</a>: A usage is defined as the time an IP address communicates with IIS, once a new IP address communicates, another usage is counted.
 
 ## Supported IIS formats
 
