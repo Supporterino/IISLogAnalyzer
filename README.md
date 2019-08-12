@@ -22,3 +22,61 @@ The following statistics are created by the analyzer in raw text and csv:
 |UsersPerMonth|A list of usages[^1] per month|UsagesPerMonth|
 
 [^1]: A usage is defined as the time an IP address communicates with IIS, once a new IP address communicates, another usage is counted.
+
+## Supported IIS formats
+
+The script supports the following formats out of the box:
+
+1. date, time, s_ip, cs_method, cs_uri_stem, cs_uri_query, s_port, cs_username, c_ip, user_agent, referer, sc_status, sc_substatus, sc_win32_status, cs_bytes, time_taken
+2. date, time, s_ip, cs_method, cs_uri_stem, cs_uri_query, s_port, cs_username, c_ip, user_agent, referer, sc_status, sc_substatus, sc_win32_status, time_taken
+3. date, time, s_ip, cs_method, cs_uri_stem, cs_uri_query, s_port, cs_username, c_ip, user_agent, sc_status, sc_substatus, sc_win32_status, time_taken
+
+### Adding own formats
+
+The analyzer uses a model to load a log entry. The model looks like this and is located in the `lib/models.py`:
+```python
+class Logentry:
+    def __init__(self, date, time, s_ip, cs_method, cs_uri_stem, cs_uri_query, s_port, cs_username, c_ip, user_agent, referer, sc_status, sc_substatus, sc_win32_status, cs_bytes, time_taken):
+        self.date = date
+        self.time = time
+        self.s_ip = s_ip
+        self.cs_method = cs_method
+        self.cs_uri_stem = cs_uri_stem
+        self.cs_uri_query = cs_uri_query
+        self.s_port = s_port
+        self.cs_username = cs_username
+        self.c_ip = c_ip
+        self.user_agent = user_agent
+        self.referer = referer
+        self.sc_status = sc_status
+        self.sc_substatus = sc_substatus
+        self.sc_win32_status = sc_win32_status
+        self.cs_bytes = cs_bytes
+        self.time_taken = time_taken
+```
+
+The entrys are loaded with the following function in the `lib/helpers.py`:
+```python
+    def read_file(self, filepath):
+        print(":: Loading File {}".format(filepath))
+        entries = []
+        with open(filepath, "r", encoding=self.encoding) as log_file:
+            for line in log_file:
+                data = line.split(" ")
+                if len(data) == 16:
+                    entries.append(
+                        Logentry(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9],
+                                 data[10], data[11], data[12], data[13], data[14], data[15]))
+                elif len(data) == 15:
+                    entries.append(
+                        Logentry(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9],
+                                 data[10], data[11], data[12], data[13], 0, data[14]))
+                elif len(data) == 14:
+                    entries.append(
+                        Logentry(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9],
+                                 0, data[10], data[11], data[12], 0, data[13]))
+
+        return entries
+```
+
+If you have a logfile with a diffrent format, which uses the same or less fields as definded in the model, you can adjust the `read_file` method to load your logfile right. If your log uses diffrent fields as defined in the model, you have to adjust the model first and then the `read_file` method. 
