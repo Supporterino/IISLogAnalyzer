@@ -13,6 +13,7 @@ if __name__ == '__main__':
     start = time()
 
     helpers = Helpers(ENCODING)
+    helpers.create_directorys()
     analyzer = Analyzer(os.getcwd() + "/output/output.log", helpers)
     analyzer.run()
     csv_writer = Writer(ENCODING, helpers)

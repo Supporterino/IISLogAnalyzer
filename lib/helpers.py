@@ -88,6 +88,8 @@ class Helpers:
     def load_files(self):
         print(":: Loading Logfiles to combine")
         lines = []
+        if len(os.listdir(os.getcwd() + "/input/")) == 0:
+            raise Exception("No Logfiles in input directory")
         for file_name in os.listdir(os.getcwd() + "/input/"):
             if ".log" in file_name:
                 file_path = os.getcwd() + "/input/" + file_name
@@ -136,3 +138,19 @@ class Helpers:
                                  0, data[10], data[11], data[12], 0, data[13]))
 
         return entries
+
+    @staticmethod
+    def create_directorys():
+        print(":: Check if all directorys are present")
+        if not os.path.exists("input"):
+            os.makedirs("input")
+            print("\t:: Created input directory")
+        if not os.path.exists("output"):
+            os.makedirs("output")
+            print("\t:: Created output directory")
+        if not os.path.exists("reports"):
+            os.makedirs("reports")
+            print("\t:: Created reports directory")
+        if not os.path.exists("csvs"):
+            os.makedirs("csvs")
+            print("\t:: Created csvs directory")
