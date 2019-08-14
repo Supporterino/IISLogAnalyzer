@@ -5,15 +5,25 @@ from lib import ua_parser
 
 class Analyzer:
     def __init__(self, helpers):
+        """
+        This function initializes the analyzer class with a reference to an active helper class.
+        :param helpers: Reference to an initialized helpers class.
+        """
         self.inputpath = os.getcwd() + "/output/output.log"
         self.data = collections.defaultdict()
         self.helpers = helpers
         self.path = os.getcwd() + "/reports/"
 
     def load_logfile(self):
+        """
+        This function reads the logfile to a variable.
+        """
         self.data = self.helpers.read_file(self.inputpath)
 
     def run(self):
+        """
+        This function deletes the old reports and then runs all reports.
+        """
         self.helpers.clean_up()
         self.helpers.load_files()
         self.load_logfile()
@@ -28,6 +38,9 @@ class Analyzer:
         self.get_hits_per_endpoint()
 
     def get_ip_hits(self):
+        """
+        This function iterates over the log entries and counts the appearance of an ip address.
+        """
         print(":: Analysing Hits per IP Address")
         ip_hits = {}
         fileoutput = "Hits by IP-Address \n\n"
@@ -42,6 +55,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "IpHits.txt", fileoutput)
 
     def get_statuscode_frequency(self):
+        """
+        This function iterates over the log entries and counts the appearance of the http statuscodes.
+        """
         print(":: Analysing Statuscode Frequency")
         statuscodes = {}
         fileoutput = "Hits per HTTP Statuscode \n\n"
@@ -56,6 +72,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "HttpCodeHits.txt", fileoutput)
 
     def get_hits_per_weekday(self):
+        """
+        This function iterates over the log entries and counts the HTTP requests per weekday.
+        """
         print(":: Analysing Hits per Weekday")
         days = [0, 0, 0, 0, 0, 0, 0]
         fileoutput = "Hits per Weekday \n\n"
@@ -66,6 +85,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "HitsPerDay.txt", fileoutput)
 
     def get_users_per_month(self):
+        """
+        This function iterates over the log entries and counts the usages per month.
+        """
         print(":: Analysing Users per Month")
         users = {}
         fileoutput = "Users per Month \n\n"
@@ -91,6 +113,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "UsersPerMonth.txt", fileoutput)
 
     def get_hits_per_endpoint(self):
+        """
+        This function iterates over the log entries and counts the HTTP requests per endpoint of the IIS.
+        """
         print(":: Analysing Endpoint hits")
         endpoints = {}
         fileoutput = "Hits per Endpoint \n\n"
@@ -105,6 +130,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "HitsPerEndpoint.txt", fileoutput)
 
     def get_by_os(self):
+        """
+        This function iterates over the log entries and separates the useragent into browser and operating system and counts the appearance of each browser and operating system.
+        """
         print(":: Analysing Useragents")
         agents = {}
         browser = {}
@@ -141,6 +169,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "Browser.txt", fileoutput_b)
 
     def get_hits_month(self):
+        """
+        This function iterates over the log entries and counts the HTTP requests per month.
+        """
         print(":: Analysing Hits per month")
         months = {}
         fileoutput = "Hits per Month \n\n"
@@ -155,6 +186,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "HitsPerMonth.txt", fileoutput)
 
     def get_hits_hour(self):
+        """
+        This function iterates over the log entries and counts the HTTP requests per hour.
+        """
         print(":: Analysing Hits per Dayhour")
         hours = {}
         fileoutput = "Hits per Hour \n\n"
@@ -169,6 +203,9 @@ class Analyzer:
         self.helpers.write_file(self.path + "HitsPerHour.txt", fileoutput)
 
     def http_206_per_month(self):
+        """
+        This function iterates over the log entries and counts the HTTP 206 statuscode per month and which endpoint caused it.
+        """
         print(":: Analysing HTTP Code 206 per month")
         months = {}
         files = {}

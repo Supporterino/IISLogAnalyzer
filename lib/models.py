@@ -1,5 +1,8 @@
 class Logentry:
     def __init__(self, date, time, s_ip, cs_method, cs_uri_stem, cs_uri_query, s_port, cs_username, c_ip, user_agent, referer, sc_status, sc_substatus, sc_win32_status, cs_bytes, time_taken):
+        """
+        This initializes an object, which holds a single log entry.
+        """
         self.date = date
         self.time = time
         self.s_ip = s_ip
