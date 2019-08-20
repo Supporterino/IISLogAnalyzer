@@ -22,6 +22,8 @@ class Grapher:
         self.plotBrowsers()
         self.plotWeeks()
         self.plotEndpoints()
+        self.plotHTTPCodes()
+        self.plotOS()
 
     def printPieChart(self, inLabels, inValues, graphTitle, limit, size):
         labels = []
@@ -119,3 +121,28 @@ class Grapher:
             X.append(parts[0])
             Y.append(int(parts[1].replace('\n', '')))
         self.printPieChart(X, Y, "Used Endpoints (Top 10)", 10, (12, 7.5))
+
+    def plotHTTPCodes(self):
+        X = []
+        Y = []
+        print("\t:: Plotting graph for HTTP statuscodes")
+        with open(self.report_path + "HttpCodeHits.txt", "r", encoding=self.encoding) as input_file:
+            data = input_file.readlines()[2:]
+        for entry in data:
+            parts = entry.split('\t')
+            X.append(parts[0])
+            Y.append(int(parts[1].replace('\n', '')))
+        self.printPieChart(X, Y, "HTTP Statuscodes", len(X), (12, 7.5))
+
+    def plotOS(self):
+        X = []
+        Y = []
+        print("\t:: Plotting graph for OS usage")
+        with open(self.report_path + "OS.txt", "r", encoding=self.encoding) as input_file:
+            data = input_file.readlines()[2:]
+        for entry in data:
+            if not entry.startswith('\t'):
+                parts = entry.split('\t')
+                X.append(parts[0])
+                Y.append(int(parts[1].replace('\n', '')))
+        self.printPieChart(X, Y, "Operatingsystems", len(X), (12, 7.5))
