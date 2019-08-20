@@ -181,6 +181,28 @@ class Helpers:
 
         return entries
 
+    def beatufiyMonth(self, inputString):
+        """
+        This function takes a string with a year and month and beautifys it.
+        :param inputString: string with month and year in the format 'YYYY-MM'
+        :return: String with apprevation of month and year
+        """
+        months = {
+            '01': 'Jan',
+            '02': 'Feb',
+            '03': 'März',
+            '04': 'Apr',
+            '05': 'Mai',
+            '06': 'Jun',
+            '07': 'Jul',
+            '08': 'Aug',
+            '09': 'Sept',
+            '10': 'Okt',
+            '11': 'Nov',
+            '12': 'Dez'
+        }
+
+        return str(months.get(inputString[-2:])) + " " + str(inputString[0:4])
     @staticmethod
     def create_directorys():
         """
@@ -199,3 +221,6 @@ class Helpers:
         if not os.path.exists("csvs"):
             os.makedirs("csvs")
             print("\t:: Created csvs directory")
+        if not os.path.exists("graphs"):
+            os.makedirs("graphs")
+            print("\t:: Created graphs directory")

@@ -3,6 +3,7 @@ from time import time
 from lib.analyzer import Analyzer
 from lib.helpers import Helpers
 from lib.writer import Writer
+from lib.grapher import Grapher
 
 ENCODING = "utf-8"
 FILEFORMAT = ".log"
@@ -16,6 +17,8 @@ if __name__ == '__main__':
     helpers.create_directorys()
     analyzer = Analyzer(helpers)
     analyzer.run()
+    grapher = Grapher(ENCODING, helpers)
+    grapher.run()
     csv_writer = Writer(ENCODING, helpers)
     csv_writer.run_all()
 
