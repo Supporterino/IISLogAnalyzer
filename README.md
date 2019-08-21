@@ -1,4 +1,3 @@
-
 # IISLogAnalyzer
 
 ## Introduction
@@ -17,6 +16,14 @@ This analyzer uses IIS Logs, to create statistics as raw text files and as CSV f
 2. Copy your logfiles inside the input folder
 3. Execute main.py again
 4. The raw text statistics are now inside the `reports` directory, the csvs inside `csvs` and inside the `output` directory is a file, which is the combination of all your logfiles
+
+## Documentation
+
+[Grapher](https://supporterino.github.io/IISLogAnalyzer/grapher.html)
+[Analyzer](https://supporterino.github.io/IISLogAnalyzer/analyzer.html)
+[Helpers](https://supporterino.github.io/IISLogAnalyzer/helpers.html)
+[Writer](https://supporterino.github.io/IISLogAnalyzer/writer.html)
+[Models](https://supporterino.github.io/IISLogAnalyzer/models.html)
 
 ## Reports
 
