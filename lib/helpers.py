@@ -79,7 +79,7 @@ class Helpers:
             report_path + "HitsPerHour.txt",
             report_path + "HTTPCode206.txt",
             report_path + "UsersPerMonth.txt",
-                 ]
+        ]
 
         for file in files:
             if os.path.exists(file):
@@ -103,7 +103,7 @@ class Helpers:
             csv_path + "HitsPerOS.csv",
             csv_path + "HTTP206HitsPerMonth.csv",
             csv_path + "UsagesPerMonth.csv",
-                 ]
+        ]
 
         for file in files:
             if os.path.exists(file):
@@ -128,19 +128,19 @@ class Helpers:
         self.write_file(os.getcwd() + "/output/output.log", lines)
 
     @staticmethod
-    def convert_date_into_weekday(input):
+    def convert_date_into_weekday(input_string):
         """
         This function takes a date as a string and returns a number representing the weekday
-        :param input: string with date in following format YYYY-MM-DD
+        :param input_string: string with date in following format YYYY-MM-DD
         :return: a number, which represents the weekday (0-6)
         """
-        return datetime.date(int(input[0:4]), int(input[5:7]), int(input[8:10])).weekday()
+        return datetime.date(int(input_string[0:4]), int(input_string[5:7]), int(input_string[8:10])).weekday()
 
     @staticmethod
-    def convert_day_to_string(input):
+    def convert_day_to_string(input_string):
         """
         This functions converts a number of a weekday into its string.
-        :param input: number 0-6
+        :param input_string: number 0-6
         :return: String with weekday
         """
         weekdays = {
@@ -152,7 +152,7 @@ class Helpers:
             '5': 'Samstag',
             '6': 'Sonntag'
         }
-        return weekdays.get(str(input))
+        return weekdays.get(str(input_string))
 
     def read_file(self, filepath):
         """
@@ -181,10 +181,11 @@ class Helpers:
 
         return entries
 
-    def beatufiyMonth(self, inputString):
+    @staticmethod
+    def beatufiy_month(input_string):
         """
         This function takes a string with a year and month and beautifys it.
-        :param inputString: string with month and year in the format 'YYYY-MM'
+        :param input_string: string with month and year in the format 'YYYY-MM'
         :return: String with apprevation of month and year
         """
         months = {
@@ -202,7 +203,7 @@ class Helpers:
             '12': 'Dez'
         }
 
-        return str(months.get(inputString[-2:])) + " " + str(inputString[0:4])
+        return str(months.get(input_string[-2:])) + " " + str(input_string[0:4])
     @staticmethod
     def create_directorys():
         """

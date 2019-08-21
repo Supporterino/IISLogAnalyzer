@@ -5,8 +5,8 @@ from lib.helpers import Helpers
 from lib.writer import Writer
 from lib.grapher import Grapher
 
-ENCODING = "utf-8"
-FILEFORMAT = ".log"
+ENCODING = "latin-1"
+FILEFORMAT = ".txt"
 
 
 if __name__ == '__main__':
