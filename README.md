@@ -19,11 +19,11 @@ This analyzer uses IIS Logs, to create statistics as raw text files and as CSV f
 
 ## Documentation
 
-[Grapher](https://supporterino.github.io/IISLogAnalyzer/grapher.html)
-[Analyzer](https://supporterino.github.io/IISLogAnalyzer/analyzer.html)
-[Helpers](https://supporterino.github.io/IISLogAnalyzer/helpers.html)
-[Writer](https://supporterino.github.io/IISLogAnalyzer/writer.html)
-[Models](https://supporterino.github.io/IISLogAnalyzer/models.html)
++ [Grapher](https://supporterino.github.io/IISLogAnalyzer/grapher.html)
++ [Analyzer](https://supporterino.github.io/IISLogAnalyzer/analyzer.html)
++ [Helpers](https://supporterino.github.io/IISLogAnalyzer/helpers.html)
++ [Writer](https://supporterino.github.io/IISLogAnalyzer/writer.html)
++ [Models](https://supporterino.github.io/IISLogAnalyzer/models.html)
 
 ## Reports
 
