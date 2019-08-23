@@ -149,7 +149,7 @@ class Grapher:
             parts = entry.split('\t')
             x.append(self.helpers.beatufiy_month(parts[0]))
             y.append(int(parts[1].replace('\n', '')))
-        self.print_bar_chart(x, y, "Hits per Month", "Month", "Hits", len(x), (20, 10))
+        self.print_bar_chart(x, y, "Hits per Month", "Month", "Hits", len(x), (12, 7.5))
 
     def plot_endpoints(self):
         """

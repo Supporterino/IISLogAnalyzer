@@ -225,3 +225,6 @@ class Helpers:
         if not os.path.exists("graphs"):
             os.makedirs("graphs")
             print("\t:: Created graphs directory")
+        if not os.path.exists("html_report"):
+            os.makedirs("html_report")
+            print("\t:: Created html_report directory")
