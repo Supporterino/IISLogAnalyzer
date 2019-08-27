@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This analyzer uses IIS Logs, to create statistics as raw text files and as CSV files. Graphical statistics will be added in a later version, as of right now the analyzer has no dependencies.
+This analyzer uses IIS Logs, to create statistics as raw text files and as CSV files. besides the mentioned text reports the analyzer also creates a directory called `graphs`, which stores a collection of charts created with `matplotlib`.
 
 ## Requirements
 
@@ -30,20 +30,25 @@ This analyzer uses IIS Logs, to create statistics as raw text files and as CSV f
 
 The following statistics are created by the analyzer in raw text and csv:
 
-|report name|information|csv names|
-|-----------|-----------|---------|
-|Browser|A list of all browser communicating with the IIS and the amount of http request each browser has made|HitsPerBrowser|
-|HitsPerDay|A list with all weekdays and the http request made at this day (whole period)|HitsPerDay|
-|HitsPerEndpoint|A list of all endpoints targeted by clients and the request amount|HitsPerEndpoint|
-|HitsPerHour|All hours and their http request amounts (whole period)|HitsPerHour|
-|HitsPerMonth|A list with all months of the period and their http request during that time|HitsPerMonth|
-|HTTPCode206|A list with months where HTTP 206 Codes happend. The amount of that code and which endpoint caused it|HTTP206HitsPerMonth|
-|HTTPCodeHits|A list with the hitten HTTP codes and their amount|HitsPerHTTPCode|
-|IpHits|Http requests per IP address|HitsPerIP|
-|OS|A list of all operating systems hitting the IIS with their hit amounts|HitsPerOS|
-|UsersPerMonth|A list of usages<sup>[1](#myfootnote1)</sup> per month|UsagesPerMonth|
+|report name|information|csv names|chart|
+|-----------|-----------|---------|---|
+|Browser|A list of all browser communicating with the IIS and the amount of http request each browser has made|HitsPerBrowser| Yes
+|HitsPerDay|A list with all weekdays and the http request made at this day (whole period)|HitsPerDay| Yes 
+|HitsPerEndpoint|A list of all endpoints targeted by clients and the request amount|HitsPerEndpoint| Yes (Top 10)
+|HitsPerHour|All hours and their http request amounts (whole period)|HitsPerHour| Yes
+|HitsPerMonth|A list with all months of the period and their http request during that time|HitsPerMonth| Yes
+|HTTPCode206|A list with months where HTTP 206 Codes happend. The amount of that code and which endpoint caused it|HTTP206HitsPerMonth| No
+|HTTPCodeHits|A list with the hitten HTTP codes and their amount|HitsPerHTTPCode| Yes
+|IpHits|Http requests per IP address|HitsPerIP| No
+|OS|A list of all operating systems hitting the IIS with their hit amounts|HitsPerOS| Yes
+|UsersPerMonth|A list of usages<sup>[1](#myfootnote1)</sup> per month|UsagesPerMonth| No
 
 <a name="myfootnote1">1</a>: A usage is defined as the time an IP address communicates with IIS, once a new IP address communicates, another usage is counted.
+
+## HTML Report
+
+The directory `html_report` includes a `report.html` which includes most of the charts from the `graphs` directory with an basic explanation. The pictures are embedded as base64 strings inside the html file, which means the file can be moved without loosing content.
+
 
 ## Supported IIS formats
 
