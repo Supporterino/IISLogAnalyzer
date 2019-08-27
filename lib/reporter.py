@@ -109,11 +109,11 @@ class Reporter:
         text += self.gen_chapter_heading("Übersicht der angesprochenen Endpunkt")
         with open(self.graph_path + "Used Endpoints (Top 10).png", "rb") as img:
             img_string = base64.b64encode(img.read())
-        text += self.gen_report_big("Übericht über die am häufigsten aufgerufenen Einstiegspunkte in die Anwendung, sowie der geladenen Ressourcen. Die Übersicht zeigt nur die 10 meistgenutzten Endpunkte", "data:image/png;base64," + img_string.decode('utf-8'), "Endpointübersicht")
+        text += self.gen_report_big("Übericht über die am häufigsten aufgerufenen Einstiegspunkte in die Anwendung, sowie der geladenen Ressourcen. Die Übersicht zeigt nur die 10 meistgenutzten Endpunkte.", "data:image/png;base64," + img_string.decode('utf-8'), "Endpointübersicht")
         text += self.gen_chapter_heading("Auswertung HTTP Statuscodes")
         with open(self.graph_path + "HTTP Statuscodes.png", "rb") as img:
             img_string = base64.b64encode(img.read())
-        text += self.gen_report_big("Übersicht der Statuscodes, die vom Server an die Clients gesendet wurden.", "data:image/png;base64," + img_string.decode('utf-8'), "HTTP Statuscodes")
+        text += self.gen_report_big("Übersicht der Statuscodes, die vom Server an die Clients gesendet wurden. Hierbei weisen einige Statuscodes auf bestimmte Aktionen des Servers hin. <br><b>HTTP Code 304</b> - Weiterleitung durch den Server <br><b>HTTP Code 206</b> - Dateidownload<br><b>HTTP Code 404</b> - Datei nicht vorhanden", "data:image/png;base64," + img_string.decode('utf-8'), "HTTP Statuscodes")
         text += self.gen_end()
 
         with open(self.path + "report.html", "w+") as output:

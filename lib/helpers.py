@@ -165,7 +165,7 @@ class Helpers:
         with open(filepath, "r", encoding=self.encoding) as log_file:
             for line in log_file:
                 data = line.split(" ")
-                # if data[8] == "192.168.1.20":
+                # if data[8] == "192.168.1.20": # ip address
                 if len(data) == 16:
                     entries.append(
                         Logentry(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9],
@@ -203,7 +203,7 @@ class Helpers:
             '12': 'Dez'
         }
 
-        return str(months.get(input_string[-2:])) + " " + str(input_string[0:4])
+        return str(months.get(input_string[-2:])) + "'" + str(input_string[2:4])
     @staticmethod
     def create_directorys():
         """

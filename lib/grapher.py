@@ -85,7 +85,7 @@ class Grapher:
                 yvals.append(y_vals[i])
 
         fig, ax = plt.subplots(figsize=size)
-        ax.bar(xvals, yvals, align="center", alpha=0.5)
+        ax.bar(xvals, yvals, align="center", alpha=0.5, width=0.5)
         ax.set(title=graph_title, ylabel=y_axis, xlabel=x_axis)
         ax.set_xticks(xvals)
         ax.set_xticklabels(xlabels)
