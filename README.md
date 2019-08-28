@@ -1,5 +1,9 @@
 # IISLogAnalyzer
 
+## Note
+
+The branch development holds the new version with a database implementation
+
 ## Introduction
 
 This analyzer uses IIS Logs, to create statistics as raw text files and as CSV files. besides the mentioned text reports the analyzer also creates a directory called `graphs`, which stores a collection of charts created with `matplotlib`.
