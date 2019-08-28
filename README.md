@@ -1,9 +1,5 @@
 # IISLogAnalyzer
 
-## Note
-
-The branch development holds the new version with a database implementation
-
 ## Introduction
 
 This analyzer uses IIS Logs, to create statistics as raw text files and as CSV files. besides the mentioned text reports the analyzer also creates a directory called `graphs`, which stores a collection of charts created with `matplotlib`.
@@ -37,7 +33,7 @@ The following statistics are created by the analyzer in raw text and csv:
 |report name|information|csv names|chart|
 |-----------|-----------|---------|---|
 |Browser|A list of all browser communicating with the IIS and the amount of http request each browser has made|HitsPerBrowser| Yes
-|HitsPerDay|A list with all weekdays and the http request made at this day (whole period)|HitsPerDay| Yes 
+|HitsPerDay|A list with all weekdays and the http request made at this day (whole period)|HitsPerDay| Yes
 |HitsPerEndpoint|A list of all endpoints targeted by clients and the request amount|HitsPerEndpoint| Yes (Top 10)
 |HitsPerHour|All hours and their http request amounts (whole period)|HitsPerHour| Yes
 |HitsPerMonth|A list with all months of the period and their http request during that time|HitsPerMonth| Yes
@@ -110,4 +106,4 @@ The entrys are loaded with the following function in the `lib/helpers.py`:
         return entries
 ```
 
-If you have a logfile with a diffrent format, which uses the same or less fields as definded in the model, you can adjust the `read_file` method to load your logfile right. If your log uses diffrent fields as defined in the model, you have to adjust the model first and then the `read_file` method. 
+If you have a logfile with a diffrent format, which uses the same or less fields as definded in the model, you can adjust the `read_file` method to load your logfile right. If your log uses diffrent fields as defined in the model, you have to adjust the model first and then the `read_file` method.
