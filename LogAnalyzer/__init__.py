@@ -41,3 +41,4 @@ def initialize_db():
 def run():
     global PATH, ENCODING, TIMESTAMP
     print(":: Running log analyses. Your timestamp for this run is: '{}'".format(TIMESTAMP))
+    utils.load_files(PATH, ENCODING, db.session, TIMESTAMP)

@@ -22,3 +22,19 @@ class Utils:
             os.makedirs("database")
             print("\t:: Created database directory")
         return False
+
+    def load_file_to_db(self, path, encoding, db, timestamp):
+        return path
+
+    def load_files(self, path, encoding, db, timestamp):
+        files_to_load = []
+        for x in os.walk(path):
+            files_to_load.extend(self.get_files_of_dir(x[0]))
+        #print(files_to_load)
+
+
+    def get_files_of_dir(self, path):
+        files = []
+        for file in os.listdir(path):
+            files.append(os.path.join(path, file))
+        return files
