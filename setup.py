@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="log-analyzer",
-    version="0.0.1",
+    version="2.0.0",
     author="Supporterino",
     author_email="lars@roth-kl.de",
     description="A log analyzer for IIS logs.",
@@ -19,6 +19,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'matplotlib','sqlalchemy',
+        'matplotlib','sqlalchemy', 'sys', 'os', 'chardet',
       ],
 )

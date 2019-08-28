@@ -6,7 +6,7 @@ Base = declarative_base()
 
 class DB_connection:
     def __init__(self):
-        self.engine = create_engine('sqlite:///database.db', echo=True)
+        self.engine = create_engine('sqlite:///database/database.db', echo=True)
         self.session = (sessionmaker(bind=self.engine))()
         self.version = __version__
 
