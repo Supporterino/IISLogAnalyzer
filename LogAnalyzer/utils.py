@@ -14,13 +14,13 @@ class Utils:
         This function generates the needed directorys, if they are missing.
         """
         print(":: Check if all directorys are present")
+        if not os.path.exists("database"):
+            os.makedirs("database")
+            print("\t:: Created database directory")
         if not os.path.exists("input"):
             os.makedirs("input")
             print("\t:: Created input directory")
             return True
-        if not os.path.exists("database"):
-            os.makedirs("database")
-            print("\t:: Created database directory")
         return False
 
     def load_file_to_db(self, path, encoding, db, timestamp):
