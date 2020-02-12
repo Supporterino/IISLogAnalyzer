@@ -2,6 +2,7 @@
 import chardet
 import os
 
+
 class Utils:
     def detect_encoding(self, path):
         with open(os.path.join(path, os.listdir(path)[0]), "rb") as file_data:
@@ -30,11 +31,14 @@ class Utils:
         files_to_load = []
         for x in os.walk(path):
             files_to_load.extend(self.get_files_of_dir(x[0]))
-        #print(files_to_load)
-
+        # print(files_to_load)
 
     def get_files_of_dir(self, path):
         files = []
         for file in os.listdir(path):
             files.append(os.path.join(path, file))
         return files
+
+    def check_for_empty_folder(self, path):
+        if not os.listdir(path):
+            raise Exception("The input directory is empty!")
