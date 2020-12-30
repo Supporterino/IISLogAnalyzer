@@ -15,11 +15,11 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+        "License :: OSI Approved :: GNU General Public License v3",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
     install_requires=[
-        'sqlalchemy'
+        'storm'
     ],
 )
